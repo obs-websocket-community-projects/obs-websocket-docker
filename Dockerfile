@@ -19,8 +19,8 @@ COPY obs-websocket-plugin obs-websocket-plugin
 RUN mv obs-websocket-plugin/**.deb obs-websocket-plugin/plugin.deb
 RUN apt install -y ./obs-websocket-plugin/plugin.deb
 
-# Expose websocket port
-EXPOSE 4444
+ENV OBS_PORT 4444
+ENV OBS_PASS password
 
-# Run OBS through xvfb (headless UI)
-CMD xvfb-run obs
+# Start OBS with specified websocket port and password
+CMD xvfb-run obs --websocket_password=${OBS_PASS} --websocket_port=${OBS_PORT}
