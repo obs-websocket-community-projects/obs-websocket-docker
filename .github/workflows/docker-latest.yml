@@ -27,7 +27,7 @@ jobs:
         input=$(ls -d downloads/*-Ubuntu64) && echo PRERELEASE=${input:10:7} >> $GITHUB_ENV
     - name: Set Tag
       run: |
-        echo FINAL_TAG=$(date +%s).${PRERELEASE} >> GITHUB_ENV
+        echo FINAL_TAG=$(date +%s).${PRERELEASE} >> $GITHUB_ENV
 
     - name: Display directory contents
       run: ls -R
