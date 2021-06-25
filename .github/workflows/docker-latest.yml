@@ -35,4 +35,4 @@ jobs:
         docker build . \
         --file Dockerfile \
         --tag latest \
-        --tag /some/repo/obswebsocket:$(date +%s).${PRERELEASE}
+        --tag some/repo/obswebsocket:$(date +%s).${PRERELEASE}
