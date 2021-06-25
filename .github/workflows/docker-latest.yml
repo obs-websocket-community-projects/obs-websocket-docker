@@ -3,6 +3,9 @@ name: Docker Image CI - Latest
 on:
   push:
     branches: [ main ]
+  schedule:
+    # Once daily at midnight
+    - cron:  '0 0 * * *'
 
 jobs:
   build:
