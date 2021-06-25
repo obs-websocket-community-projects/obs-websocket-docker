@@ -20,9 +20,14 @@ jobs:
         branch: master
         repo: Palakis/obs-websocket
         path: downloads
-      
+     
+    - name: Extract prerelease info
+      run: |
+        input=$(ls -d downloads/*-Ubuntu64) && echo PRERELEASE=${input:10:6} >> $GITHUB_ENV
+  
     - name: Display directory contents
       run: ls -R
 
-#     - name: Build the Docker image
-#       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    # # Build the image
+    # - name: Build the Docker image
+    #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
