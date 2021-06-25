@@ -19,6 +19,7 @@ jobs:
         workflow: main.yml # "CI Multiplatform Build"
         branch: master
         repo: Palakis/obs-websocket
+        name: Ubuntu64
         path: downloads
       
     - name: Display directory contents
