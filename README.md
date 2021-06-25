@@ -32,11 +32,14 @@ docker-compose down --rmi local
 
 ### Build Arguments
 
-TODO
+| Build Argument     | Description                                   | Default  |
+|--------------------|-----------------------------------------------|----------|
+| OBS_STUDIO_VERSION | Version of OBS Studio*                        | 27.0.1   |
+
+\* You can search available versions in Ubuntu via `apt list -a obs-studio`
 
 ## Known Issues
  - obs-websocket cannot be configured with authentication disabled; this is not currently a feature in 5.x (providing a blank password does not disable authentication).
  
 ## TODO
- - OBS version
  - Websocket version

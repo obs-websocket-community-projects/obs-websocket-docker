@@ -11,8 +11,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         xvfb
 
 # Install OBS
+ARG OBS_STUDIO_VERSION=27.0.1
 RUN add-apt-repository ppa:obsproject/obs-studio \
-    && apt install -y obs-studio
+    && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
 
 # Copy the Ubuntu package into the container, and install it
 COPY obs-websocket-plugin obs-websocket-plugin
