@@ -25,9 +25,7 @@ jobs:
     - name: Extract prerelease info
       run: |
         input=$(ls -d downloads/*-Ubuntu64) && echo PRERELEASE=${input:10:7} >> $GITHUB_ENV
-
-    - 
-  
+        
     - name: Display directory contents
       run: ls -R
 
