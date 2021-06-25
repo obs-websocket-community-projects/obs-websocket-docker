@@ -25,6 +25,9 @@ jobs:
     - name: Extract prerelease info
       run: |
         input=$(ls -d downloads/*-Ubuntu64) && echo PRERELEASE=${input:10:7} >> $GITHUB_ENV
+    - name: Set Tag
+      run: |
+        echo FINAL_TAG=$(date +%s).${PRERELEASE} >> GITHUB_ENV
 
     - name: Display directory contents
       run: ls -R
@@ -47,4 +50,4 @@ jobs:
         push: true
         tags: |
           tinatiel/obswebsocket:latest
-          tinatiel/obswebsocket:$(date +%s).${PRERELEASE}
+          tinatiel/obswebsocket:${{ env.FINAL_TAG }}
