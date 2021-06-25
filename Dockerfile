@@ -15,10 +15,10 @@ ARG OBS_STUDIO_VERSION=27.0.1
 RUN add-apt-repository ppa:obsproject/obs-studio \
     && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
 
-# Copy the Ubuntu package into the container, and install it
-COPY obs-websocket-plugin obs-websocket-plugin
-RUN mv obs-websocket-plugin/**.deb obs-websocket-plugin/plugin.deb
-RUN apt install -y ./obs-websocket-plugin/plugin.deb
+# Copy the Ubuntu package into the container, this comes from the GH action
+COPY downloads /downloads
+RUN mv downloads/**/**.deb plugin.deb
+RUN apt install -y ./plugin.deb
 
 ENV OBS_PORT 4444
 ENV OBS_PASS password

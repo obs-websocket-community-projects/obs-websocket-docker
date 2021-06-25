@@ -3,6 +3,18 @@ Docker image that runs OBS with Palakis OBS Websocket installed.
 
 **Only obs-websocket version 5.0.0 and higher is supported.**
 
+## Building
+If building manually (not via CI/CD), you need to create a `downloads` folder and place the unzipped
+obs-websocket Ubuntu64 artifact folder in it. For example, you would have a structure like this:
+```
+-- Dockerfile
+-- README.md
+-- downloads
+   \-- 5cf2b50-Ubuntu64
+       \-- obs-websocket_1-5cf2b50-git-1_amd64.deb
+-- .gitignore
+```
+
 ## Running
 
 To start the container:
@@ -32,9 +44,9 @@ docker-compose down --rmi local
 
 ### Build Arguments
 
-| Build Argument     | Description                                   | Default  |
-|--------------------|-----------------------------------------------|----------|
-| OBS_STUDIO_VERSION | Version of OBS Studio*                        | 27.0.1   |
+| Build Argument     | Description                                  | Default  |
+|--------------------|----------------------------------------------|----------|
+| OBS_STUDIO_VERSION | Version of OBS Studio*                       | 27.0.1   |
 
 \* You can search available versions in Ubuntu via `apt list -a obs-studio`
 
