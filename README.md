@@ -2,28 +2,24 @@
 Docker image that runs OBS with Palakis OBS Websocket installed.
 
 **Only obs-websocket version 5.0.0 and higher is supported.**
+**This uses the ubuntu / amd64 distribution**
 
-## Building
-If building manually (not via CI/CD), you need to create a `downloads` folder and place the unzipped
-obs-websocket Ubuntu64 artifact folder in it. For example, you would have a structure like this:
-```
--- Dockerfile
--- README.md
--- downloads
-   \-- 5cf2b50-Ubuntu64
-       \-- obs-websocket_1-5cf2b50-git-1_amd64.deb
--- .gitignore
-```
+You can use this in GitHub Actions or your local PC, but it may not work on your Raspberry Pi.
 
 ## Running
 
-To start the container:
+To start the container with generic docker:
+```
+docker run -p 4444:4444 tinatiel/obswebsocket:latest
+```
+
+A compose file is also available in this repository as an example:
 ```
 docker-compose up
 ```
-OBS will run with the obs-websocket plugin installed, listening on the default port and password (see [Configuration](#Configuration))
+The compose-file will run the latest image of `tinatiel/obswebsocket:latest`, with the default build args and environment variables (see [Configuration](#Configuration)).
 
-To take down the container:
+To take down the docker-compose container:
 ```
 docker-compose down
 
@@ -53,5 +49,24 @@ docker-compose down --rmi local
 ## Known Issues
  - obs-websocket cannot be configured with authentication disabled; this is not currently a feature in 5.x (providing a blank password does not disable authentication).
  
-## TODO
- - Websocket version
+## Building
+### Automated Builds
+CI/CD Runs daily, at midnight.
+Tag format is `tinatiel/obswebsocket:$timestamp.$obs-websocket-sha`.
+
+### Manual Builds
+If building manually (not via CI/CD), you need to create a `downloads` folder and place the unzipped
+obs-websocket Ubuntu64 artifact folder in it. For example, you would have a structure like this:
+```
+-- Dockerfile
+-- README.md
+-- downloads
+   \-- 5cf2b50-Ubuntu64
+       \-- obs-websocket_1-5cf2b50-git-1_amd64.deb
+-- .gitignore
+```
+Then, you can build and run as normal:
+```
+docker build -t obswebsocket-local .
+docker run -p 4444:4444 obswebsocket-local
+```
