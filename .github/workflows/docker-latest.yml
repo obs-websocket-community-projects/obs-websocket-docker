@@ -8,7 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    # Checkout the Repo
     - uses: actions/checkout@v2
+    
+    # Download the latest artifacts from Palakis
     - name: Download Palakis latest Ubuntu Build
       uses: dawidd6/action-download-artifact@v2
       with:
@@ -16,8 +19,9 @@ jobs:
         workflow: main.yml # "CI Multiplatform Build"
         branch: master
         repo: Palakis/obs-websocket
+        path: downloads
       
-    - name: Display download
+    - name: Display directory contents
       run: ls -R
 
 #     - name: Build the Docker image
