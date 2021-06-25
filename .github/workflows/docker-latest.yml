@@ -1,0 +1,24 @@
+name: Docker Image CI - Latest
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download Palakis latest Ubuntu Build
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        workflow: main.yml # "CI Multiplatform Build"
+        branch: master
+        repo: Palakis/obs-websocket
+      
+    - name: Display download
+      run: ls -R
+
+#     - name: Build the Docker image
+#       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
