@@ -69,9 +69,16 @@ jobs:
 
     - name: Verify the build runs
       run: |
+        # Run the image
         docker run -d -p 4444:4444 localhost:5000/${{ env.ARTIFACT }}:latest \
-        && python ./verify_conn.py \
+
+        # Verify the conn, but suppress stderr so we can collect logs
+        && python ./verify_conn.py suppress_std_err \ 
+
+        # Collect the logs
         && docker logs $(docker ps --filter="ancestor=tinatiel/obswebsocket" --latest --format="{{.ID}}") \
+        
+        # Run again; if it failed, then it will stderr and fail the build here
         && python ./verify_conn.py
 
     # Login to docker and push image
