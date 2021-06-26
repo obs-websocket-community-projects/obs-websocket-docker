@@ -89,5 +89,5 @@ jobs:
 
     # Verify Upload / Inspect Image     
     - name: Inspect Uploaded Image
-        run: |
-          docker image inspect ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
+      run: |
+        docker image inspect ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
