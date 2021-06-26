@@ -14,8 +14,9 @@ echo "Attempting connect:"
 python ./verify_conn.py suppress_std_err
 
 # Collect the logs
-echo "Collected Logs:"
-docker logs $(docker ps --filter="ancestor=tinatiel/obswebsocket" --latest --format="{{.ID}}")
+CONTAINER_ID=$(docker ps --filter="ancestor=tinatiel/obswebsocket" --latest --format="{{.ID}}")
+echo "Collecting Logs for container ID ${CONTAINER_ID}"
+docker logs ${CONTAINER_ID}
 
 # Run again; if it failed, then it will stderr and fail the build here
 python ./verify_conn.py
