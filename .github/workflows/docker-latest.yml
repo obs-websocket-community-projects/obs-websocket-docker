@@ -87,4 +87,5 @@ jobs:
     # Inspect Image     
     - name: Inspect Uploaded Image
       run: |
-        docker image inspect ${{ env.REGISTRY }}/${{ env.ARTIFACT }}
+        docker pull ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:${{ env.FINAL_TAG }} \
+        && docker image inspect ${{ env.REGISTRY }}/${{ env.ARTIFACT }}
