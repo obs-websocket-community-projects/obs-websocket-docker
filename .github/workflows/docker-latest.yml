@@ -83,9 +83,3 @@ jobs:
         tags: |
           ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
           ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:${{ env.FINAL_TAG }}
-
-    # Inspect Image     
-    - name: Inspect Uploaded Image
-      run: |
-        docker pull ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:${{ env.FINAL_TAG }} \
-        && docker image inspect docker.io/${{ env.REGISTRY }}/${{ env.ARTIFACT }}
