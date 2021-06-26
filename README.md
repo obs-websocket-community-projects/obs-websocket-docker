@@ -1,4 +1,4 @@
-![Latest/Nightly](https://github.com/tinatiel/obs-websocket-docker/actions/workflows/docker-latest/badge.svg)
+![Latest/Nightly](https://github.com/TinaTiel/obs-websocket-docker/actions/workflows/docker-latest/badge.svg)
 
 # OBS-Websocket-Docker
 Docker image that runs OBS with Palakis OBS Websocket installed.
