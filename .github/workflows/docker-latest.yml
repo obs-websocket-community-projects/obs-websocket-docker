@@ -84,10 +84,19 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
-          ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:${{ env.FINAL_TAG }}
+          ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:test
 
-    # Verify Upload / Inspect Image     
-    - name: Inspect Uploaded Image
-      run: |
-        docker image inspect ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
+    # - name: Build and push
+    #   id: docker_build
+    #   uses: docker/build-push-action@v2
+    #   with:
+    #     context: .
+    #     push: true
+    #     tags: |
+    #       ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
+    #       ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:${{ env.FINAL_TAG }}
+
+    # # Verify Upload / Inspect Image     
+    # - name: Inspect Uploaded Image
+    #   run: |
+    #     docker image inspect ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
