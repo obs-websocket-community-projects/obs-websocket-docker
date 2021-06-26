@@ -57,9 +57,9 @@ jobs:
         tags: localhost:5000/${{ env.ARTIFACT }}:latest
 
     - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
     - name: Install Python Test Script Dependencies
       run: |
         python -m pip install --upgrade pip
