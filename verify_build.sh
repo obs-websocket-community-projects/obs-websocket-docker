@@ -10,10 +10,11 @@ echo "Running the image"
 docker run -d -p 4444:4444 $1:latest
 
 # Wait a few seconds
-sleep 3
+echo "Waiting for startup to complete"
+sleep 5
 
 # Verify the conn, but suppress stderr so we can collect logs
-echo "Attempting connect:"
+echo "Attempting to connect"
 python ./verify_conn.py suppress_std_err
 
 # Collect the logs
