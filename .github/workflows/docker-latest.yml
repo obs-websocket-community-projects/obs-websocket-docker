@@ -62,24 +62,10 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    - name: Install Python Test Script Dependencies
+
+    - name: Verify the build
       run: |
-        python -m pip install --upgrade pip
-        pip install websocket-client
-
-    - name: Verify the build runs
-      run: |
-        # Run the image
-        docker run -d -p 4444:4444 localhost:5000/${{ env.ARTIFACT }}:latest \
-
-        # Verify the conn, but suppress stderr so we can collect logs
-        && python ./verify_conn.py suppress_std_err \ 
-
-        # Collect the logs
-        && docker logs $(docker ps --filter="ancestor=tinatiel/obswebsocket" --latest --format="{{.ID}}") \
-        
-        # Run again; if it failed, then it will stderr and fail the build here
-        && python ./verify_conn.py
+        chmod +x verify_build.sh && ./verify_build.sh localhost:5000/${{ env.ARTIFACT }}
 
     # Login to docker and push image
     - name: Login to Docker Hub
