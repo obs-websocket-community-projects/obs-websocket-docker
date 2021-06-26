@@ -69,7 +69,7 @@ jobs:
 
     - name: Verify the build runs
       run: |
-        docker run -p 4444:4444 -d localhost:5000/${{ env.ARTIFACT }}:latest \
+        docker run -p 4444:4444 localhost:5000/${{ env.ARTIFACT }}:latest \
         && python ./verify_conn.py
 
     # Login to docker and push image
