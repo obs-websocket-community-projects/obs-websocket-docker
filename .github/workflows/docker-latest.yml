@@ -8,9 +8,18 @@ on:
     - cron:  '0 0 * * *'
   workflow_dispatch:
 
+environment:
+  REGISTRY: tinatiel
+  ARTIFACT: obswebsocket
+
 jobs:
-  build:
+  build-test-push:
     runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
     steps:
     # Checkout the Repo
     - uses: actions/checkout@v2
@@ -36,10 +45,32 @@ jobs:
     - name: Display directory contents
       run: ls -R
 
-    # Login to Docker, Build, and Push Image
+    # Build and Test/Verify image
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
+    
+    - name: Build and push to local registry
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: localhost:5000/${{ env.ARTIFACT }}:latest
 
+    - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+    - name: Install Python Test Script Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install websocket-client
+
+    - name: Verify the build runs
+      run: |
+        docker run -p 4444:4444 -d localhost:5000/${{ env.ARTIFACT }}:latest \
+        && python ./verify_conn.py
+
+    # Login to docker and push image
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
@@ -53,5 +84,10 @@ jobs:
         context: .
         push: true
         tags: |
-          tinatiel/obswebsocket:latest
-          tinatiel/obswebsocket:${{ env.FINAL_TAG }}
+          ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
+          ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:${{ env.FINAL_TAG }}
+
+    # Verify Upload / Inspect Image     
+    - name: Inspect Uploaded Image
+        run: |
+          docker image inspect ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:latest
