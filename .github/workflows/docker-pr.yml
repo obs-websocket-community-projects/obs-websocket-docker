@@ -1,4 +1,4 @@
-name: Docker Image CI - Latest
+name: Docker Image PR Verification
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ env:
   ARTIFACT: obswebsocket
 
 jobs:
-  build-test-push:
+  verify-pr:
     runs-on: ubuntu-latest
     services:
       registry:
