@@ -42,9 +42,9 @@ docker-compose down --rmi local
 
 ### Build Arguments
 
-| Build Argument     | Description                                  | Default  |
-|--------------------|----------------------------------------------|----------|
-| OBS_STUDIO_VERSION | Version of OBS Studio*                       | 27.1.0   |
+| Build Argument     | Description                                  | Default        |
+|--------------------|----------------------------------------------|----------------|
+| OBS_STUDIO_VERSION | Version of OBS Studio*                       | See Dockerfile |
 
 \* You can search available versions in Ubuntu via `apt list -a obs-studio`
 
