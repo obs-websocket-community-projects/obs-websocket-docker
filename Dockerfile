@@ -11,7 +11,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         xvfb
 
 # Install OBS
-ARG OBS_STUDIO_VERSION=27.1.0
+ARG OBS_STUDIO_VERSION=27.1.3
 RUN add-apt-repository ppa:obsproject/obs-studio \
     && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
 
