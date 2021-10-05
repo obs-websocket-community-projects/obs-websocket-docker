@@ -11,14 +11,14 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         xvfb
 
 # Install OBS
-ARG OBS_STUDIO_VERSION=27.1.3
+ARG OBS_STUDIO_VERSION=27.1.*
 RUN add-apt-repository ppa:obsproject/obs-studio \
     && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
 
 # Copy the Ubuntu package into the container, this comes from the GH action
 COPY downloads /downloads
 RUN mv downloads/**/**.deb plugin.deb
-RUN apt install -y ./plugin.deb
+RUN apt install -y ./plugin.deb27.
 
 ENV OBS_PORT 4444
 ENV OBS_PASS password
