@@ -18,7 +18,7 @@ RUN add-apt-repository ppa:obsproject/obs-studio \
 # Copy the Ubuntu package into the container, this comes from the GH action
 COPY downloads /downloads
 RUN mv downloads/**/**.deb plugin.deb
-RUN apt install -y ./plugin.deb27.
+RUN apt install -y ./plugin.deb
 
 ENV OBS_PORT 4444
 ENV OBS_PASS password
