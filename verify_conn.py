@@ -7,7 +7,7 @@ print("Suppressing stderr: " + str(nostderr))
 
 try:
     ws = websocket.WebSocket()
-    ws.connect("ws://localhost:4444", timeout=3)
+    ws.connect("ws://localhost:4455", timeout=3)
     print(ws.recv())
     ws.close(timeout=3)
 except Exception as exception:

@@ -11,7 +11,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         xvfb
 
 # Install OBS
-ARG OBS_STUDIO_VERSION=27.1.*
+ARG OBS_STUDIO_VERSION=28.1.*
 RUN add-apt-repository ppa:obsproject/obs-studio \
     && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
 
@@ -20,7 +20,7 @@ COPY downloads /downloads
 RUN mv downloads/**/**.deb plugin.deb
 RUN apt install -y ./plugin.deb
 
-ENV OBS_PORT 4444
+ENV OBS_PORT 4455
 ENV OBS_PASS password
 
 # Start OBS with specified websocket port and password
