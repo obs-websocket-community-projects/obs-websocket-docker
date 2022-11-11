@@ -11,7 +11,7 @@ docker run -d -p 4455:4455 $1:latest
 
 # Wait a few seconds
 echo "Waiting for startup to complete"
-sleep 15
+sleep 5
 
 # Verify the conn, but suppress stderr so we can collect logs
 echo "Attempting to connect"
