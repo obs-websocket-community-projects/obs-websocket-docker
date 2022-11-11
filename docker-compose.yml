@@ -1,6 +1,6 @@
-version: "3.9"
+version: '3.9'
 services:
   obs:
     image: tinatiel/obswebsocket:latest
     ports:
-      - "4444:4444"
+      - '4455:4455'

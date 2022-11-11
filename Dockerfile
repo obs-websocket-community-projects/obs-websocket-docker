@@ -11,17 +11,16 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         xvfb
 
 # Install OBS
-ARG OBS_STUDIO_VERSION=27.1.*
+ARG OBS_STUDIO_VERSION=28.1.*
 RUN add-apt-repository ppa:obsproject/obs-studio \
     && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
 
-# Copy the Ubuntu package into the container, this comes from the GH action
-COPY downloads /downloads
-RUN mv downloads/**/**.deb plugin.deb
-RUN apt install -y ./plugin.deb
-
-ENV OBS_PORT 4444
+# Configure OBS Web Socket
+ENV OBS_PORT 4455
 ENV OBS_PASS password
+
+# Override OBS Web Socket config
+COPY global.ini /root/.config/obs-studio/
 
 # Start OBS with specified websocket port and password
 CMD xvfb-run obs --websocket_password=${OBS_PASS} --websocket_port=${OBS_PORT}

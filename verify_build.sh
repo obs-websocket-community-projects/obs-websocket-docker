@@ -7,7 +7,7 @@ pip install websocket-client
 
 # Run the image
 echo "Running the image"
-docker run -d -p 4444:4444 $1:latest
+docker run -d -p 4455:4455 $1:latest
 
 # Wait a few seconds
 echo "Waiting for startup to complete"
