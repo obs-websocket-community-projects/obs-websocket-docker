@@ -19,5 +19,8 @@ RUN add-apt-repository ppa:obsproject/obs-studio \
 ENV OBS_PORT 4455
 ENV OBS_PASS password
 
+# Override OBS Web Socket config
+COPY global.ini /root/.config/obs-studio/
+
 # Start OBS with specified websocket port and password
 CMD xvfb-run obs --websocket_password=${OBS_PASS} --websocket_port=${OBS_PORT}
