@@ -21,11 +21,6 @@ jobs:
       # Checkout the Repo
       - uses: actions/checkout@v2
 
-      #  Set FINAL_TAG in GITHUB_ENV
-      - name: Set Tag
-        run: |
-          echo FINAL_TAG=$(date +%s).${PRERELEASE} >> $GITHUB_ENV
-
       # Build and Test/Verify image
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
