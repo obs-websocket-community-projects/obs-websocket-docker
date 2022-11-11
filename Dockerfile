@@ -15,11 +15,7 @@ ARG OBS_STUDIO_VERSION=28.1.*
 RUN add-apt-repository ppa:obsproject/obs-studio \
     && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
 
-# Copy the Ubuntu package into the container, this comes from the GH action
-COPY downloads /downloads
-RUN mv downloads/**/**.deb plugin.deb
-RUN apt install -y ./plugin.deb
-
+# Configure OBS Web Socket
 ENV OBS_PORT 4455
 ENV OBS_PASS password
 
