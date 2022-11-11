@@ -11,7 +11,7 @@ try:
     print(ws.recv())
     ws.close(timeout=3)
 except Exception as exception:
-    if(nostderr):
+    if (nostderr):
         print(exception)
     else:
         raise exception

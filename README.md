@@ -62,23 +62,9 @@ docker-compose down --rmi local
 ### Automated Builds
 
 CI/CD Runs daily, at midnight.
-Tag format is `tinatiel/obswebsocket:$timestamp.$obs-websocket-sha`.
+Tag format is `tinatiel/obswebsocket:$timestamp`.
 
 ### Manual Builds
-
-If building manually (not via CI/CD), you need to create a `downloads` folder and place the unzipped
-obs-websocket Ubuntu64 artifact folder in it. For example, you would have a structure like this:
-
-```
--- Dockerfile
--- README.md
--- downloads
-   \-- 5cf2b50-Ubuntu64
-       \-- obs-websocket_1-5cf2b50-git-1_amd64.deb
--- .gitignore
-```
-
-Then, you can build and run as normal:
 
 ```
 docker build -t obswebsocket-local .
