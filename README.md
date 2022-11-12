@@ -23,7 +23,7 @@ A compose file is also available in this repository as an example:
 docker-compose up
 ```
 
-The compose-file will run the latest image of `obs-websocket-community/docker:latest`, with the default build args and environment variables (see [Configuration](#Configuration)).
+The compose-file will run the latest image of `obswebsocketcommunity/docker:latest`, with the default build args and environment variables (see [Configuration](#Configuration)).
 
 To take down the docker-compose container:
 
@@ -62,7 +62,7 @@ docker-compose down --rmi local
 ### Automated Builds
 
 CI/CD Runs daily, at midnight.
-Tag format is `obs-websocket-community/docker:$timestamp`.
+Tag format is `obswebsocketcommunity/docker:$timestamp`.
 
 ### Manual Builds
 

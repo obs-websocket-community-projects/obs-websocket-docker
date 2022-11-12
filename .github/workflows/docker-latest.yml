@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: obs-websocket-community
+  REGISTRY: obswebsocketcommunity
   ARTIFACT: docker
 
 jobs:
