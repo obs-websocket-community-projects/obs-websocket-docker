@@ -1,6 +1,6 @@
 version: '3.9'
 services:
   obs:
-    image: obs-websocket-community/docker:latest
+    image: obswebsocketcommunity/docker:latest
     ports:
       - '4455:4455'
