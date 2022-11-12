@@ -6,8 +6,8 @@ on:
       - '**'
 
 env:
-  REGISTRY: tinatiel
-  ARTIFACT: obswebsocket
+  REGISTRY: obs-websocket-community
+  ARTIFACT: docker
 
 jobs:
   verify-pr:

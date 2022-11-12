@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: tinatiel
-  ARTIFACT: obswebsocket
+  REGISTRY: obs-websocket-community
+  ARTIFACT: docker
 
 jobs:
   build-test-push:

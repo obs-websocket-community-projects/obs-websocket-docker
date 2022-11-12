@@ -1,6 +1,6 @@
 version: '3.9'
 services:
   obs:
-    image: tinatiel/obswebsocket:latest
+    image: obs-websocket-community/docker:latest
     ports:
       - '4455:4455'

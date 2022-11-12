@@ -1,4 +1,4 @@
-![Latest/Nightly](https://github.com/TinaTiel/obs-websocket-docker/actions/workflows/docker-latest.yml/badge.svg)
+![Latest/Nightly](https://github.com/obs-websocket-community-projects/obs-websocket-docker/actions/workflows/docker-latest.yml/badge.svg)
 
 # OBS-Websocket-Docker
 
@@ -14,7 +14,7 @@ You can use this in GitHub Actions or your local PC, but it may not work on your
 To start the container with generic docker:
 
 ```
-docker run -p 4455:4455 tinatiel/obswebsocket:latest
+docker run -p 4455:4455 obs-websocket-community/docker:latest
 ```
 
 A compose file is also available in this repository as an example:
@@ -23,7 +23,7 @@ A compose file is also available in this repository as an example:
 docker-compose up
 ```
 
-The compose-file will run the latest image of `tinatiel/obswebsocket:latest`, with the default build args and environment variables (see [Configuration](#Configuration)).
+The compose-file will run the latest image of `obs-websocket-community/docker:latest`, with the default build args and environment variables (see [Configuration](#Configuration)).
 
 To take down the docker-compose container:
 
@@ -62,7 +62,7 @@ docker-compose down --rmi local
 ### Automated Builds
 
 CI/CD Runs daily, at midnight.
-Tag format is `tinatiel/obswebsocket:$timestamp`.
+Tag format is `obs-websocket-community/docker:$timestamp`.
 
 ### Manual Builds
 
