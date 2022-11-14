@@ -14,7 +14,7 @@ You can use this in GitHub Actions or your local PC, but it may not work on your
 To start the container with generic docker:
 
 ```
-docker run -p 4455:4455 obs-websocket-community/docker:latest
+docker run -p 4455:4455 obswebsocketcommunity/docker:latest
 ```
 
 A compose file is also available in this repository as an example:

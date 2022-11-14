@@ -23,4 +23,4 @@ ENV OBS_PASS password
 COPY global.ini /root/.config/obs-studio/
 
 # Start OBS with specified websocket port and password
-CMD xvfb-run obs --websocket_password=${OBS_PASS} --websocket_port=${OBS_PORT}
+CMD xvfb-run -a obs --websocket_password=${OBS_PASS} --websocket_port=${OBS_PORT}
