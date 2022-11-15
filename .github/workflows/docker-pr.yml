@@ -3,7 +3,7 @@ name: Docker Image PR Verification
 on:
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 env:
   REGISTRY: obswebsocketcommunity
@@ -27,18 +27,31 @@ jobs:
         with:
           driver-opts: network=host
 
-      - name: Build and push to local registry
+      - name: Build and push secured image to local registry
         uses: docker/build-push-action@v2
         with:
           context: .
+          file: Dockerfile.secured
           push: true
           tags: localhost:5000/${{ env.ARTIFACT }}:latest
+
+      - name: Build and push unsecured image to local registry
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile.unsecured
+          push: true
+          tags: localhost:5000/${{ env.ARTIFACT }}:latest-unsecured
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
 
-      - name: Verify the build
+      - name: Verify the secured build
         run: |
-          chmod +x verify_build.sh && ./verify_build.sh localhost:5000/${{ env.ARTIFACT }}
+          chmod +x verify_build.sh && ./verify_build.sh localhost:5000/${{ env.ARTIFACT }} latest
+
+      - name: Verify the unsecured build
+        run: |
+          chmod +x verify_build.sh && ./verify_build.sh localhost:5000/${{ env.ARTIFACT }} latest-unsecured unsecured
