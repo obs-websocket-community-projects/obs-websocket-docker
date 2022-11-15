@@ -35,7 +35,6 @@ docker_build() {
 
   tag="${_docker_repo}:${_tag}${TAG_SUFFIX}"
 
-    # --no-cache=true \
   docker build \
     --build-arg OBS_STUDIO_VERSION=${_obs_version} \
     --tag ${tag} \
