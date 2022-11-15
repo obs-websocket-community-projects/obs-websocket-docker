@@ -1,5 +1,5 @@
-# Based on ubuntu:20.04
-FROM ubuntu@sha256:aba80b77e27148d99c034a987e7da3a287ed455390352663418c0f2ed40417fe
+# Based on ubuntu latest LTS
+FROM ubuntu:latest
 
 # Install dependencies
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -11,9 +11,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         xvfb
 
 # Install OBS
-ARG OBS_STUDIO_VERSION=28.1.*
+ARG OBS_STUDIO_VERSION=28.*
 RUN add-apt-repository ppa:obsproject/obs-studio \
-    && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
+    && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}
 
 # Configure OBS Web Socket
 ENV OBS_PORT 4455
