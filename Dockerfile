@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 # Install OBS
 ARG OBS_STUDIO_VERSION=28.*
 RUN add-apt-repository ppa:obsproject/obs-studio \
-    && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}*
+    && apt-get install -y obs-studio=${OBS_STUDIO_VERSION}
 
 # Configure OBS Web Socket
 ENV OBS_PORT 4455
