@@ -72,7 +72,7 @@ jobs:
           chmod +x verify_build.sh && ./verify_build.sh localhost:5000/${{ env.ARTIFACT }} latest-unsecured unsecured
 
       - name: Build and push secured image
-        id: docker_build
+        id: docker_build_secured
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -83,7 +83,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.ARTIFACT }}:${{ env.FINAL_TAG }}
 
       - name: Build and push unsecured image
-        id: docker_build
+        id: docker_build_unsecured
         uses: docker/build-push-action@v2
         with:
           context: .
