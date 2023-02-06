@@ -19,7 +19,7 @@ while [ "$1" != "" ]; do
   esac
 done
 
-_obs_version=${1:-28.*}
+_obs_version=${1:-29.*}
 _docker_repo=${2:-obswebsocket-local}
 _tag=${3:-latest}
 
